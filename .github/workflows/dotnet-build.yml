@@ -21,12 +21,12 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
-      - name: Build
-        run: dotnet publish --configuration Release --no-restore
+      - name: Build CIPX
+        run: dotnet publish -p:CreateCipx=true --configuration Release --no-restore
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ntpserver-artifacts
+          name: ntpserver-cipx-artifacts
           path: |
-            bin/Release/net8.0-windows/publish/
+            D:\a\NtpServer\NtpServer\cipx\NtpServer.cipx
