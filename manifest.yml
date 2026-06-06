@@ -1,9 +1,12 @@
 id: classisland.ntpserver
-name: NTP 时间同步服务端
-description: 在本机启动 NTP 服务端，为局域网设备提供时间同步服务
+name: NTP服务端
+description: 在本classisland启动NTP服务端，为局域网设备提供时间同步服务
 entranceAssembly: "NtpServer.dll"
 url: https://github.com/ywydog/NTPPlugin
 version: 1.0.0.0
 apiVersion: 2.0.0.1
 author: ywydog
 icon: icon.png
+repoOwner: ywydog
+repoName: NTP服务端
+assetsRoot: main
