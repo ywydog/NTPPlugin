@@ -6,15 +6,6 @@
 
 **为 ClassIsland 提供局域网 NTP 时间同步服务！**
 
-![GitHub License](https://img.shields.io/github/license/ClassIsland/NtpServer)
-![GitHub top language](https://img.shields.io/github/languages/top/ClassIsland/NtpServer)
-![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/ClassIsland/NtpServer/total)
-
-![GitHub Release Date](https://img.shields.io/github/release-date-pre/ClassIsland/NtpServer)
-![GitHub Release](https://img.shields.io/github/v/release/ClassIsland/NtpServer?include_prereleases)
-
-</div>
-
 > [!WARNING]
 > - 此插件目前仅适用于 Windows 平台。
 > - 使用标准 NTP 端口（UDP 123）需要以管理员身份运行 ClassIsland。
