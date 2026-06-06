@@ -6100,11 +6100,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/workspace/NtpServer/NtpServer.csproj",
+      "projectUniqueName": "/workspace/NtpServer.csproj",
       "projectName": "NtpServer",
-      "projectPath": "/workspace/NtpServer/NtpServer.csproj",
+      "projectPath": "/workspace/NtpServer.csproj",
       "packagesPath": "/root/.nuget/packages/",
-      "outputPath": "/workspace/NtpServer/obj/",
+      "outputPath": "/workspace/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/root/.nuget/NuGet/NuGet.Config"

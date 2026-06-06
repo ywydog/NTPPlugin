@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iQQQAE1vqT0=",
+  "dgSpecHash": "682JouhUM+E=",
   "success": true,
-  "projectFilePath": "/workspace/NtpServer/NtpServer.csproj",
+  "projectFilePath": "/workspace/NtpServer.csproj",
   "expectedPackageFiles": [
     "/root/.nuget/packages/asyncimageloader.avalonia/3.3.0/asyncimageloader.avalonia.3.3.0.nupkg.sha512",
     "/root/.nuget/packages/avalonia/11.3.6/avalonia.11.3.6.nupkg.sha512",

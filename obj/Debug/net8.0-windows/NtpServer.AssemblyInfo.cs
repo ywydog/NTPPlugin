@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NtpServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d0061f474a04a2e53f27010447ccf724b2d2df74")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72fdecea0e109b1e03fa3748b7a52d93baf99043")]
 [assembly: System.Reflection.AssemblyProductAttribute("NtpServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NtpServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
