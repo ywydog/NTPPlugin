@@ -29,4 +29,4 @@ jobs:
         with:
           name: ntpserver-cipx-artifacts
           path: |
-            D:\a\NtpServer\NtpServer\cipx\NtpServer.cipx
+            D:\a\NTPPlugin\NTPPlugin\cipx\NTPPlugin.cipx
