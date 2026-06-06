@@ -7,6 +7,7 @@ version: 1.0.0.0
 apiVersion: 2.0.0.1
 author: ywydog
 icon: icon.png
+readme: readme.md
 repoOwner: ywydog
 repoName: NtpServer
 assetsRoot: main
