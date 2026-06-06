@@ -1,6 +1,6 @@
 # NTP 时间同步服务端
 
-[![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white)](https://github.com/ClassIsland/NtpServer)
+[![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white)](https://github.com/ywydog/NTPPlugin)
 
 **为 ClassIsland 提供局域网 NTP 时间同步服务！**
 
