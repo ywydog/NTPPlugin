@@ -1,0 +1,115 @@
+<ci:SettingsPageBase x:Class="NtpServer.NtpServerSettingsPage"
+                     xmlns="https://github.com/avaloniaui"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:ci="http://classisland.tech/schemas/xaml/core"
+                     xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+                     xmlns:vm="clr-namespace:NtpServer.ViewModels"
+                     mc:Ignorable="d"
+                     d:DesignHeight="450"
+                     d:DesignWidth="800">
+
+    <ScrollViewer>
+        <StackPanel Classes="settings-container animated-intro">
+            <!-- 管理员权限警告 -->
+            <controls:InfoBar Severity="Error"
+                              Message="你需要以管理员身份运行 ClassIsland 才能使用标准 NTP 端口(123)。"
+                              IsClosable="False"
+                              IsOpen="{Binding !ViewModel.IsRunningAsAdmin}">
+                <controls:InfoBar.ActionButton>
+                    <Button Content="以管理员身份重启"
+                            Click="ButtonRestartAsAdmin_OnClick" />
+                </controls:InfoBar.ActionButton>
+            </controls:InfoBar>
+
+            <!-- 服务启动失败警告 -->
+            <controls:InfoBar Severity="Error"
+                              Message="{Binding ViewModel.LastError}"
+                              IsClosable="False"
+                              IsOpen="{Binding !!ViewModel.LastError}" />
+
+            <!-- 服务运行状态 -->
+            <controls:InfoBar Severity="Success"
+                              Message="{Binding ViewModel.StatusText}"
+                              IsClosable="False"
+                              IsOpen="{Binding ViewModel.IsServiceRunning}" />
+
+            <!-- 连接信息 -->
+            <controls:SettingsExpander IconSource="{ci:FluentIconSource &#xE704;}"
+                                       Header="连接信息"
+                                       IsExpanded="True"
+                                       IsVisible="{Binding ViewModel.IsServiceRunning}"
+                                       Description="在其他 ClassIsland 端使用以下地址同步时间">
+                <controls:SettingsExpanderItem Content="已响应请求数"
+                                               Description="{Binding ViewModel.RequestCount}" />
+                <ItemsControl ItemsSource="{Binding ViewModel.LocalIpAddresses}"
+                              IsVisible="{Binding !!ViewModel.LocalIpAddresses.Count}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <controls:SettingsExpanderItem Content="{Binding}">
+                                <controls:SettingsExpanderItem.Footer>
+                                    <Button Content="复制"
+                                            Click="ButtonCopyAddress_OnClick"
+                                            Tag="{Binding}" />
+                                </controls:SettingsExpanderItem.Footer>
+                            </controls:SettingsExpanderItem>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </controls:SettingsExpander>
+
+            <!-- NTP 服务设置 -->
+            <controls:SettingsExpander IconSource="{ci:FluentIconSource &#xE770;}"
+                                       Header="NTP 服务设置"
+                                       IsExpanded="True">
+                <controls:SettingsExpanderItem Content="监听端口"
+                                               Description="NTP 服务端监听的 UDP 端口（默认 123）">
+                    <controls:SettingsExpanderItem.Footer>
+                        <NumericUpDown Value="{Binding ViewModel.Settings.Port, Mode=TwoWay}"
+                                       Minimum="1"
+                                       Maximum="65535"
+                                       Width="120" />
+                    </controls:SettingsExpanderItem.Footer>
+                </controls:SettingsExpanderItem>
+
+                <controls:SettingsExpanderItem Content="时间源"
+                                               Description="选择 NTP 响应使用的时间来源">
+                    <controls:SettingsExpanderItem.Footer>
+                        <ComboBox SelectedIndex="{Binding ViewModel.Settings.TimeSource, Mode=TwoWay}"
+                                  Width="180">
+                            <ComboBoxItem Content="系统时间" />
+                            <ComboBoxItem Content="ClassIsland 精确时间" />
+                        </ComboBox>
+                    </controls:SettingsExpanderItem.Footer>
+                </controls:SettingsExpanderItem>
+
+                <controls:SettingsExpanderItem Content="Stratum 级别"
+                                               Description="NTP Stratum 层级（默认 3）">
+                    <controls:SettingsExpanderItem.Footer>
+                        <NumericUpDown Value="{Binding ViewModel.Settings.Stratum, Mode=TwoWay}"
+                                       Minimum="1"
+                                       Maximum="15"
+                                       Width="120" />
+                    </controls:SettingsExpanderItem.Footer>
+                </controls:SettingsExpanderItem>
+            </controls:SettingsExpander>
+
+            <!-- 服务控制 -->
+            <controls:SettingsExpander IconSource="{ci:FluentIconSource &#xE895;}"
+                                       Header="服务控制"
+                                       IsExpanded="True">
+                <controls:SettingsExpanderItem Content="重启服务"
+                                               Description="应用当前设置并重启 NTP 服务"
+                                               IsClickEnabled="True"
+                                               ActionIconSource="{ci:FluentIconSource &#xE72C;}"
+                                               Click="ButtonRestartService_OnClick" />
+                <controls:SettingsExpanderItem Content="停止服务"
+                                               Description="停止 NTP 服务"
+                                               IsClickEnabled="True"
+                                               ActionIconSource="{ci:FluentIconSource &#xE71A;}"
+                                               Click="ButtonStopService_OnClick" />
+            </controls:SettingsExpander>
+        </StackPanel>
+    </ScrollViewer>
+</ci:SettingsPageBase>
