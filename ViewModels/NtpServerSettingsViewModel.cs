@@ -12,6 +12,7 @@ public partial class NtpServerSettingsViewModel : ObservableObject
     [ObservableProperty] private long _requestCount;
     [ObservableProperty] private string? _lastError;
     [ObservableProperty] private List<string> _localIpAddresses = [];
+    [ObservableProperty] private bool _isNonStandardPort;
 
     public NtpServerSettings Settings { get; }
     public NtpServerService Service { get; }
@@ -30,6 +31,7 @@ public partial class NtpServerSettingsViewModel : ObservableObject
         RequestCount = Service.RequestCount;
         LastError = Service.LastError;
         LocalIpAddresses = Service.GetLocalIpAddresses();
+        IsNonStandardPort = Settings.Port != 123;
 
         if (IsServiceRunning)
         {

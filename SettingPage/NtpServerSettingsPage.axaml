@@ -41,6 +41,11 @@
                                        IsExpanded="True"
                                        IsVisible="{Binding ViewModel.IsServiceRunning}"
                                        Description="在其他 ClassIsland 端使用以下地址同步时间">
+                <!-- 非标准端口警告 -->
+                <controls:InfoBar Severity="Warning"
+                                  Message="ClassIsland 不支持非标准 NTP 端口，其他 ClassIsland 端可能无法连接。请将端口改为 123。"
+                                  IsClosable="False"
+                                  IsOpen="{Binding ViewModel.IsNonStandardPort}" />
                 <controls:SettingsExpanderItem Content="已响应请求数"
                                                Description="{Binding ViewModel.RequestCount}" />
                 <ItemsControl ItemsSource="{Binding ViewModel.LocalIpAddresses}"
