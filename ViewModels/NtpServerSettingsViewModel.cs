@@ -35,9 +35,9 @@ public partial class NtpServerSettingsViewModel : ObservableObject
         IsNonStandardPort = Settings.Port != 123;
 
         // 生成 ClassIsland 可直接使用的地址列表
-        // ClassIsland 使用 GuerrillaNtp，只接受主机名/IP，标准端口 123 无需指定
+        // 注意：ClassIsland 不支持带端口号的 NTP 地址，标准端口 123 无需指定
         ClassIslandAddresses = LocalIpAddresses
-            .Select(ip => new AddressItem(ip))
+            .Select(ip => new AddressItem($"http://{ip}"))
             .ToList();
 
         if (IsServiceRunning)
@@ -61,7 +61,7 @@ public partial class NtpServerSettingsViewModel : ObservableObject
 public class AddressItem
 {
     /// <summary>
-    /// ClassIsland 可直接使用的时间服务器地址（纯 IP，不带端口）
+    /// ClassIsland 可直接使用的时间服务器地址（带 http:// 前缀，不带端口，ClassIsland 不支持带端口号）
     /// </summary>
     public string Value { get; }
 
