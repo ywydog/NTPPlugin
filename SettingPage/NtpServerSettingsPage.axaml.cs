@@ -137,26 +137,14 @@ public partial class NtpServerSettingsPage : SettingsPageBase
     {
         if (sender is Button button && button.Tag is string address)
         {
-            // ClassIsland 使用 GuerrillaNtp 库，NtpClient 只接受主机名或 IP 地址，
-            // 不支持带端口号的格式。标准 NTP 端口为 123，默认无需指定。
-            var fullAddress = ViewModel.Settings.Port == 123
-                ? address
-                : $"{address}:{ViewModel.Settings.Port}";
             try
             {
                 var clipboard = TopLevel.GetTopLevel(this)?.Clipboard;
                 if (clipboard != null)
                 {
-                    await clipboard.SetTextAsync(fullAddress);
-                    if (ViewModel.Settings.Port != 123)
-                    {
-                        this.ShowWarningToast($"已复制: {fullAddress}（注意：ClassIsland 不支持非标准端口，请使用端口 123）");
-                    }
-                    else
-                    {
-                        this.ShowSuccessToast($"已复制: {fullAddress}");
-                    }
-                    _logger?.LogDebug("[NtpServer] 用户复制了地址: {Address}", fullAddress);
+                    await clipboard.SetTextAsync(address);
+                    this.ShowSuccessToast($"已复制: {address}");
+                    _logger?.LogDebug("[NtpServer] 用户复制了地址: {Address}", address);
                 }
             }
             catch (Exception ex)

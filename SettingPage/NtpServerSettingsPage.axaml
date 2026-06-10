@@ -40,7 +40,7 @@
                                        Header="连接信息"
                                        IsExpanded="True"
                                        IsVisible="{Binding ViewModel.IsServiceRunning}"
-                                       Description="在其他 ClassIsland 端使用以下地址同步时间">
+                                       Description="在其他 ClassIsland 端的「精确时间」设置中填入以下地址">
                 <!-- 非标准端口警告 -->
                 <controls:InfoBar Severity="Warning"
                                   Message="ClassIsland 不支持非标准 NTP 端口，其他 ClassIsland 端可能无法连接。请将端口改为 123。"
@@ -48,15 +48,17 @@
                                   IsOpen="{Binding ViewModel.IsNonStandardPort}" />
                 <controls:SettingsExpanderItem Content="已响应请求数"
                                                Description="{Binding ViewModel.RequestCount}" />
-                <ItemsControl ItemsSource="{Binding ViewModel.LocalIpAddresses}"
-                              IsVisible="{Binding !!ViewModel.LocalIpAddresses.Count}">
+                <!-- ClassIsland 可用地址列表 -->
+                <ItemsControl ItemsSource="{Binding ViewModel.ClassIslandAddresses}"
+                              IsVisible="{Binding !!ViewModel.ClassIslandAddresses.Count}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <controls:SettingsExpanderItem Content="{Binding}">
+                            <controls:SettingsExpanderItem Content="{Binding Value}"
+                                                           Description="ClassIsland 精确时间服务器地址">
                                 <controls:SettingsExpanderItem.Footer>
                                     <Button Content="复制"
                                             Click="ButtonCopyAddress_OnClick"
-                                            Tag="{Binding}" />
+                                            Tag="{Binding Value}" />
                                 </controls:SettingsExpanderItem.Footer>
                             </controls:SettingsExpanderItem>
                         </DataTemplate>
